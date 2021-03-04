@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import br.com.franca.dto.in.PessoaDTO;
+import br.com.franca.dto.cadastro.PessoaDTO;
 
 @Table(name = "tb_pessoa", uniqueConstraints = { @UniqueConstraint(columnNames = { "cpf" }, name = "UK_TB_PESSOA_CPF"),
 		@UniqueConstraint(columnNames = { "email" }, name = "UK_TB_PESSOA_EMAIL") })

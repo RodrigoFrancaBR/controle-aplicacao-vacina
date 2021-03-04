@@ -1,4 +1,4 @@
-package br.com.franca.dto.in;
+package br.com.franca.dto.cadastro;
 
 import java.time.LocalDate;
 

@@ -7,8 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ControleAplicacaoVacinaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ControleAplicacaoVacinaApplication.class, args);
-		System.out.println("Hello World!");
+		SpringApplication.run(ControleAplicacaoVacinaApplication.class, args);		
 	}
 
 }
