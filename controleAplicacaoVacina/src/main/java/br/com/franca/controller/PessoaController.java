@@ -1,5 +1,7 @@
 package br.com.franca.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,12 +26,12 @@ public class PessoaController {
 	}
 
 	@PostMapping
-	public void cadastrarPessoa(@RequestBody PessoaDTO dto) {
+	public void cadastrarPessoa(@RequestBody @Valid PessoaDTO dto) {
 		pessoaService.cadastrarPessoa(dto);
 	}
 
-	@PostMapping(path = "/{pessoaId}/vacinas")
-	public void vacinar(@PathVariable("pessoaId") Long pessoaId, @RequestBody VacinacaoDTO dto) {
+	@PostMapping(path = "/{id}/vacinas")
+	public void vacinar(@PathVariable("id") Long pessoaId, @RequestBody VacinacaoDTO dto) {
 
 		System.out.println(pessoaId);
 		System.out.println(dto.getNomeDaVacina());

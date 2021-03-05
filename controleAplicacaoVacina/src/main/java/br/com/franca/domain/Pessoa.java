@@ -21,10 +21,10 @@ public class Pessoa {
 	@Id
 	private Long id;
 
-	@Column(nullable = false, length = 30)
+	@Column(nullable = false, length = 255)
 	private String nome;
 
-	@Column(nullable = false)
+	@Column(nullable = false, length = 255)
 	private String email;
 
 	@Column(nullable = false, length = 11)
@@ -32,10 +32,6 @@ public class Pessoa {
 
 	@Column(name = "dt_nascimento", nullable = false)
 	private LocalDate dataNascimento;
-
-	public Long getId() {
-		return id;
-	}
 
 	public Pessoa() {
 	}
@@ -70,6 +66,10 @@ public class Pessoa {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+	
+	public Long getId() {
+		return id;
 	}
 
 //	public void setId(Long id) {

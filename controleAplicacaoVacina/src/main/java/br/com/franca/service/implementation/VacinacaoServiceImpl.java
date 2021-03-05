@@ -1,13 +1,13 @@
 package br.com.franca.service.implementation;
 
-import java.util.Optional;
-
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import br.com.franca.domain.Pessoa;
 import br.com.franca.domain.Vacina;
 import br.com.franca.domain.Vacinacao;
 import br.com.franca.dto.cadastro.VacinacaoDTO;
+import br.com.franca.exception.ObjectNotFoundException;
 import br.com.franca.repository.VacinacaoRepository;
 import br.com.franca.service.interfaces.PessoaService;
 import br.com.franca.service.interfaces.VacinaService;
@@ -29,9 +29,22 @@ public class VacinacaoServiceImpl implements VacinacaoService {
 
 	@Override
 	public void vacinar(Long pessoaId, VacinacaoDTO dto) {
-		Optional<Pessoa> pessoa = pessoaService.findById(pessoaId);
+		Pessoa pessoa = pessoaService.findById(pessoaId)
+				.orElseThrow(() -> new ObjectNotFoundException("Pessoa não encontrada com o id: " + pessoaId));
+
 		Vacina vacina = vacinaService.findByNome(dto.getNomeDaVacina());
-		Vacinacao vacinacao = new Vacinacao(vacina, pessoa.get(), dto.getDataDeVacinacao());
-		vacinacaoRepository.save(vacinacao);
+
+		if (vacina == null) {
+			throw new ObjectNotFoundException("Vacina não encontrada com o nome: " + dto.getNomeDaVacina());
+		}
+
+		Vacinacao vacinacao = new Vacinacao(vacina, pessoa, dto.getDataDeVacinacao());
+
+		try {
+			vacinacao = vacinacaoRepository.save(vacinacao);
+		} catch (DataIntegrityViolationException e) {
+			System.out.println(e.getMessage());
+		}
+		System.out.println(vacinacao.getId());
 	}
 }

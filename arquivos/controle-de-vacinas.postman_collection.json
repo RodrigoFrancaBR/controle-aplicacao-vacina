@@ -1,0 +1,51 @@
+{
+	"variables": [],
+	"info": {
+		"name": "controle-de-vacinas",
+		"_postman_id": "c86cfdbc-93c5-eb0e-2f16-b0da8f9ba97e",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cadastrar Pessoa",
+			"request": {
+				"url": "localhost:8080/pessoas",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nome\":\"Rodrigo França\",\n\t\"email\":\"rfrancacosta@gmail.com\",\n\t\"cpf\":\"12345678912\",\n\t\"dataNascimento\":\"1985-04-02\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastrar Aplicação de Vacina",
+			"request": {
+				"url": "localhost:8080/pessoas/1/vacinas",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nomeDaVacina\":\"Tríplice Viral\",\n\t\"dataDeVacinacao\":\"2021-01-21\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

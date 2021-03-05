@@ -2,12 +2,24 @@ package br.com.franca.dto.cadastro;
 
 import java.time.LocalDate;
 
-public class PessoaDTO {
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
+import com.sun.istack.NotNull;
+
+public class PessoaDTO {
+	
+	@NotNull @NotEmpty(message = "Nome não deve ser vazio") @Size(max = 255)	
 	private String nome;
+	
+	@NotNull @NotEmpty(message = "Email não deve ser vazio") @Size(max = 255)
 	private String email;
+	
+	@NotNull @NotEmpty (message = "Cpf não deve ser vazio")@Size(max = 11)
 	private String cpf;
-	private LocalDate dataNascimento;
+	
+	@NotNull
+	private LocalDate dataNascimento;	
 
 	public String getNome() {
 		return nome;

@@ -18,22 +18,20 @@ public class Vacina {
 	@Id
 	private Long id;
 
-	@Column(nullable = false, length = 30)
+	@Column(nullable = false, length = 255)
 	private String nome;
 
-	@Column(name = "forma_aplicar")
+	@Column(name = "forma_aplicar", length = 255)
 	private String formaDeAplicar;
-
+	
+	@Column(length = 255)
 	private String indicacao;
 
-	@Column(name = "quando_tomar")
+	@Column(name = "quando_tomar", length = 255)
 	private String quandoTomar;
 
+	@Column(length = 255)
 	private String beneficios;
-
-	public Long getId() {
-		return id;
-	}
 	
 	@Override
 	public int hashCode() {
@@ -64,6 +62,10 @@ public class Vacina {
 //		this.id = id;
 //	}
 
+	public Long getId() {
+		return id;
+	}
+		
 	public String getNome() {
 		return nome;
 	}
